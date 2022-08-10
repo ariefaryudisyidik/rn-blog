@@ -8,6 +8,8 @@ export const BlogProvider = ({children}) => {
   const addBlogPost = () => {
     setBlogPosts([...blogPosts, {title: `Blog Post #${blogPosts.length + 1}`}]);
   };
+  const edtBlogPost = () => {};
+  const deletBlogPost = () => {};
 
   return (
     <BlogContext.Provider value={{data: blogPosts, addBlogPost: addBlogPost}}>
