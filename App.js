@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import IndexScreen from './src/screens/IndexScreen';
 import {NavigationContainer} from '@react-navigation/native';
-import {BlogProvider} from './src/context/BlogContext';
+import {Provider} from './src/context/BlogContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,7 @@ const App = () => {
         <Stack.Screen
           name="Index"
           component={IndexScreen}
-          options={{title: 'Index'}}
+          options={{title: 'Blogs'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -22,8 +22,8 @@ const App = () => {
 
 export default () => {
   return (
-    <BlogProvider>
+    <Provider>
       <App />
-    </BlogProvider>
+    </Provider>
   );
 };
