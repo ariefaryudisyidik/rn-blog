@@ -4,6 +4,9 @@ import IndexScreen from './src/screens/IndexScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from './src/context/BlogContext';
 import ShowScreen from './src/screens/ShowScreen';
+import CreateScreen from './src/screens/CreateScreen';
+import {TouchableOpacity} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,9 +17,20 @@ const App = () => {
         <Stack.Screen
           name="Index"
           component={IndexScreen}
-          options={{title: 'Blogs'}}
+          options={({navigation}) => ({
+            title: 'Blogs',
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Create');
+                }}>
+                <Feather name="plus" size={24} />
+              </TouchableOpacity>
+            ),
+          })}
         />
         <Stack.Screen name="Show" component={ShowScreen} />
+        <Stack.Screen name="Create" component={CreateScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
