@@ -12,7 +12,7 @@ const EditScreen = ({route}) => {
   return (
     <BlogPostForm
       initialValues={{title: blogPost.title, content: blogPost.content}}
-      onSubmit={(title, content) => console.log(title, content)}
+      onSubmit={(title, content) => editBlogPost(id, title, content)}
     />
   );
 };
