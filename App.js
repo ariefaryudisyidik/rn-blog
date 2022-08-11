@@ -7,6 +7,8 @@ import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
 import {TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import EditScreen from './src/screens/EditScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,8 +31,23 @@ const App = () => {
             ),
           })}
         />
-        <Stack.Screen name="Show" component={ShowScreen} />
+        <Stack.Screen
+          name="Show"
+          component={ShowScreen}
+          options={({navigation, route}) => ({
+            headerRight: () => {
+              const {id} = route.params;
+              return (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Edit', {id})}>
+                  <EvilIcons name="pencil" size={24} />
+                </TouchableOpacity>
+              );
+            },
+          })}
+        />
         <Stack.Screen name="Create" component={CreateScreen} />
+        <Stack.Screen name="Edit" component={EditScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
