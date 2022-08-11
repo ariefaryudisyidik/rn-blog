@@ -9,7 +9,12 @@ const EditScreen = ({route}) => {
 
   const blogPost = state.find(blogPost => blogPost.id === id);
 
-  return <BlogPostForm />;
+  return (
+    <BlogPostForm
+      initialValues={{title: blogPost.title, content: blogPost.content}}
+      onSubmit={(title, content) => console.log(title, content)}
+    />
+  );
 };
 
 export default EditScreen;
